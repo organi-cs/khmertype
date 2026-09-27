@@ -1,0 +1,11 @@
+# One quote per line, then a TAB, then the source. Lines starting with # are ignored.
+the quick brown fox jumps over the lazy dog	pangram
+A journey of a thousand miles begins with a single step.	proverb
+Where there is a will, there is a way.	proverb
+Actions speak louder than words.	proverb
+The early bird catches the worm, but the second mouse gets the cheese.	proverb
+Many hands make light work.	proverb
+Do not count your chickens before they hatch.	proverb
+Slow and steady wins the race.	proverb
+Practice every day and your fingers will learn the way on their own.	sample sentence
+Phnom Penh is the capital of Cambodia and sits where the Mekong meets the Tonle Sap.	sample sentence
