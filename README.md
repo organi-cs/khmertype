@@ -9,7 +9,8 @@ It's built for students and anyone learning the Khmer keyboard. An English mode
 is included so you can compare the two.
 
 **Start here:** the browser version draws Khmer perfectly in any modern browser,
-with no terminal or font setup:
+with no terminal or font setup. Use it online at
+**https://organi-cs.github.io/khmertype/**, or run it locally:
 
 ```bash
 uv run khmertyper web
@@ -77,6 +78,24 @@ per key and the NiDA layout's ZWSP spacebar. Pasting is blocked.
 
 The page loads the *Kantumruy Pro* and *Roboto Mono* fonts from Google Fonts,
 and falls back to your system's Khmer font when you're offline.
+
+### Hosting (GitHub Pages)
+
+The web app is fully static, so it can be hosted anywhere. To build the site:
+
+```bash
+python scripts/build_site.py _site
+```
+
+This copies `src/khmertyper/web/` and the shared word lists (into `data/`)
+into `_site/`. It uses relative paths only, so the site works under a
+sub-path like `/khmertype/`. The build fails if the page references a missing
+file or an absolute path.
+
+`.github/workflows/pages.yml` runs the full test suite (Python and
+JavaScript) on every push to `main`, then builds and deploys the site to
+GitHub Pages. To use it in a fork, set **Settings → Pages → Source** to
+**GitHub Actions**.
 
 ## Terminal version: features
 
@@ -413,6 +432,7 @@ uv run pytest
 | `src/khmertyper/app.py` | Textual UI |
 | `src/khmertyper/web/` | browser version: `js/khmer.js`, `engine.js`, `metrics.js` are ports of the Python modules; `app.js` is the UI |
 | `src/khmertyper/webserver.py` | local server for `khmertyper web` |
+| `scripts/build_site.py`, `.github/workflows/pages.yml` | static build and GitHub Pages deployment |
 
 The browser version re-implements the Khmer logic in JavaScript. To keep both
 versions judging typing identically, `scripts/make_parity_fixture.py` records

@@ -83,7 +83,7 @@ async function newTest(words = null, src = null) {
       src = text.source;
       if (settings.mode === "time") wordPool = await loadWords(settings.lang);
     } catch (err) {
-      $("#words").textContent = `could not load the word list (${err.message}). Is the app running through "khmertyper web"?`;
+      $("#words").textContent = `could not load the word list (${err.message}). Serve this folder over http, e.g. with "khmertyper web".`;
       return;
     }
   }
