@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="km">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>khmertype</title>
+  <meta name="description" content="A Monkeytype-style typing test for Khmer.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23323437'/><text x='16' y='23' font-size='20' text-anchor='middle' fill='%23e2b714' font-family='sans-serif'>ក</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="classic">
+  <div id="app">
+    <header id="top">
+      <a id="logo" href="#" title="new test (tab)">
+        <span class="logo-km">វាយ</span><span class="logo-text"><span class="dim">khmer</span>type</span>
+      </a>
+      <nav id="nav">
+        <button class="icon-btn" id="nav-restart" title="new test (tab)" aria-label="new test">
+          <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4"/></svg>
+        </button>
+        <button class="icon-btn" id="nav-history" title="history & personal bests" aria-label="history">
+          <svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/></svg>
+        </button>
+        <button class="icon-btn" id="nav-sound" title="typing sound" aria-label="typing sound">
+          <svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg>
+        </button>
+        <button class="icon-btn" id="nav-settings" title="settings (esc)" aria-label="settings">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+        </button>
+      </nav>
+    </header>
+
+    <div id="config" role="toolbar" aria-label="test settings">
+      <div class="group" data-key="lang">
+        <button data-value="km">ខ្មែរ</button>
+        <button data-value="en">english</button>
+      </div>
+      <div class="sep"></div>
+      <div class="group" data-key="mode">
+        <button data-value="time">time</button>
+        <button data-value="words">words</button>
+        <button data-value="quote">quote</button>
+      </div>
+      <div class="sep"></div>
+      <div class="group" data-key="time">
+        <button data-value="15">15</button><button data-value="30">30</button>
+        <button data-value="60">60</button><button data-value="120">120</button>
+      </div>
+      <div class="group" data-key="words">
+        <button data-value="10">10</button><button data-value="25">25</button><button data-value="50">50</button>
+      </div>
+    </div>
+
+    <main id="test">
+      <div id="live">
+        <span id="progress"></span>
+        <span id="live-wpm"></span>
+        <span id="source"></span>
+      </div>
+      <div id="words-wrap">
+        <div id="words" aria-live="off"></div>
+        <div id="focus-overlay"><svg viewBox="0 0 24 24"><path d="M9 4l6 16M4 9l16 6"/></svg>click here or press any key to focus</div>
+      </div>
+      <div id="hint" aria-live="polite"></div>
+      <textarea id="input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                aria-label="type here"></textarea>
+      <div id="tip"><kbd>tab</kbd> new test &nbsp;·&nbsp; <kbd>esc</kbd> settings</div>
+    </main>
+
+    <section id="result" hidden>
+      <div id="res-main">
+        <div id="res-big">
+          <div class="stat big"><div class="label">wpm</div><div class="value" id="r-wpm"></div></div>
+          <div class="stat big"><div class="label">acc</div><div class="value" id="r-acc"></div></div>
+        </div>
+        <div id="chart"></div>
+      </div>
+      <div id="pb-banner" hidden><svg viewBox="0 0 24 24"><path d="M3 18h18l-2-10-5 4-2-6-2 6-5-4z"/></svg><span></span></div>
+      <div id="res-stats"></div>
+      <div id="res-missed"></div>
+      <div id="res-actions">
+        <button class="icon-btn big" id="res-next" title="next test (tab)" aria-label="next test">
+          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <button class="icon-btn big" id="res-repeat" title="repeat this text" aria-label="repeat test">
+          <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4"/></svg>
+        </button>
+      </div>
+      <div class="tip-line"><kbd>tab</kbd> next test</div>
+    </section>
+
+    <footer id="bottom">
+      <span>word = 5 keystrokes · clusters counted as whole letter blocks</span>
+      <span id="theme-name"></span>
+    </footer>
+  </div>
+
+  <dialog id="settings">
+    <form method="dialog">
+      <h2>settings</h2>
+      <div class="setting" data-key="theme"><div class="name">theme</div><div class="choices themes"></div></div>
+      <div class="setting" data-key="sound"><div class="name">typing sound</div>
+        <div class="choices"><button type="button" data-value="off">off</button><button type="button" data-value="click">click</button><button type="button" data-value="soft">soft</button></div></div>
+      <div class="setting" data-key="liveSpeed"><div class="name">live speed <small>show wpm while typing</small></div>
+        <div class="choices"><button type="button" data-value="false">off</button><button type="button" data-value="true">on</button></div></div>
+      <div class="setting" data-key="smoothCaret"><div class="name">smooth caret</div>
+        <div class="choices"><button type="button" data-value="false">off</button><button type="button" data-value="true">on</button></div></div>
+      <div class="setting" data-key="hints"><div class="name">key hints <small>show the keys for a cluster you got wrong</small></div>
+        <div class="choices"><button type="button" data-value="false">off</button><button type="button" data-value="true">on</button></div></div>
+      <div class="setting" data-key="mergeDaTa"><div class="name">treat <span class="km">◌្ដ</span> and <span class="km">◌្ត</span> as the same <small>they look identical in most fonts</small></div>
+        <div class="choices"><button type="button" data-value="false">off</button><button type="button" data-value="true">on</button></div></div>
+      <div class="setting"><div class="name">history <small>stored in this browser only</small></div>
+        <div class="choices"><button type="button" id="clear-history" class="danger">clear history</button></div></div>
+      <div class="dialog-actions"><button value="close" class="primary">done</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="history">
+    <form method="dialog">
+      <h2>personal bests</h2>
+      <div id="h-bests"></div>
+      <div id="h-compare"></div>
+      <h2>recent tests</h2>
+      <div id="h-recent"></div>
+      <div id="h-missed"></div>
+      <div class="dialog-actions"><button value="close" class="primary">close</button></div>
+    </form>
+  </dialog>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
